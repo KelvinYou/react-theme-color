@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { ThemeContext } from './../theme/ThemeContext';
 
 const Home = () => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div>Home</div>
+    <div  style={{ color: theme.primaryColor }}>Home</div>
   )
 }
 
