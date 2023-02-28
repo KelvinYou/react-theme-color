@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,11 +13,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { ThemeContext } from './../theme/ThemeContext';
 
 const pages = ['Home', 'Profile'];
 const settings = ['Profile'];
 
 const PrimaryNavBar = () => {
+  const { theme } = useContext(ThemeContext);
   
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -42,7 +44,10 @@ const PrimaryNavBar = () => {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static" style={{ 
+        backgroundColor: theme.primaryColor, 
+        height: '70px' 
+      }}>
         <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

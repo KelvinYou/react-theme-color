@@ -1,18 +1,33 @@
 import React, { createContext, useState } from 'react';
 
 interface Theme {
+  mode: string;
   primaryColor: string;
+  onPrimaryColor: string;
   secondaryColor: string;
+  onSecondaryColor: string;
+  backgroundColor: string;
+  onBackgroundColor: string;
 }
 
 const lightTheme: Theme = {
-  primaryColor: 'black',
-  secondaryColor: '#6c757d',
+  mode: "light",
+  primaryColor: 'purple',
+  onPrimaryColor: '#fff',
+  secondaryColor: '#f1c40f',
+  onSecondaryColor: '#000',
+  backgroundColor: '#fff',
+  onBackgroundColor: '#000',
 };
 
 const darkTheme: Theme = {
-  primaryColor: 'white',
-  secondaryColor: '#343a40',
+  mode: "dark",
+  primaryColor: '#4d2177',
+  onPrimaryColor: '#fff',
+  secondaryColor: '#f1c40f',
+  onSecondaryColor: '#000',
+  backgroundColor: '#121212',
+  onBackgroundColor: '#fff',
 };
 
 interface ThemeContextType {
@@ -41,7 +56,6 @@ export const ThemeProvider: React.FC<MyComponentProps> = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
-      
     </ThemeContext.Provider>
   );
 };

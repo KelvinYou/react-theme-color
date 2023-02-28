@@ -7,14 +7,21 @@ const Home = () => {
   console.info(theme.primaryColor + ", " + theme.secondaryColor);
 
   return (
-    <>
-      <div  style={{ color: theme.primaryColor }}>
+    <div style={{ 
+      backgroundColor: theme.backgroundColor,
+      height: 'calc(100vh - 70px)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: "column",
+    }}>
+      <div  style={{ color: theme.onBackgroundColor }}>
         Home
       </div>
       <button onClick={toggleTheme}>
-        Switch
+        {theme.mode === "light" ? "Switch to Dark" : "Switch to Light"}
       </button>
-    </>
+    </div>
     
   )
 }
