@@ -26,20 +26,22 @@ interface MyComponentProps {
 
 export const ThemeContext = createContext<ThemeContextType>({
   theme: lightTheme,
-  toggleTheme: () => {},
+  toggleTheme: () => {
+    
+  },
 });
 
 export const ThemeProvider: React.FC<MyComponentProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(lightTheme);
 
   const toggleTheme = () => {
-    console.info(theme);
     setTheme(theme === lightTheme ? darkTheme : lightTheme);
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
+      
     </ThemeContext.Provider>
   );
 };
