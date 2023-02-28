@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 interface Theme {
   mode: string;
@@ -47,8 +47,16 @@ export const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeProvider: React.FC<MyComponentProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(lightTheme);
+  // const [theme, setTheme] = useState<Theme>(lightTheme);
+  
+  // Retrieve the theme from local storage or use the default light theme
+  const [theme, setTheme] = useState<Theme>(JSON.parse(localStorage.getItem('theme') || 'null') || lightTheme);
 
+  // Set the selected theme in local storage
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [theme]);
+  
   const toggleTheme = () => {
     setTheme(theme === lightTheme ? darkTheme : lightTheme);
   };
